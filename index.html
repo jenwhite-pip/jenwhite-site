@@ -147,7 +147,7 @@
     </section>
 
     <section class="contact">
-      <a href="mailto:your-email@example.com" class="link">Email</a>
+      <a href="#" class="link email-link" data-u="77gniwolj" data-d="moc.nsm" rel="nofollow">Email</a>
       <a href="https://www.linkedin.com/in/jen-white-0754221b" class="link" target="_blank" rel="noopener">LinkedIn</a>
     </section>
 
@@ -158,6 +158,14 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('.email-link').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var rev = function (s) { return s.split('').reverse().join(''); };
+        window.location.href = 'mailto:' + rev(link.dataset.u) + '@' + rev(link.dataset.d);
+      });
+    });
 
     (function initCarousel() {
       const carousel = document.querySelector('.carousel');
